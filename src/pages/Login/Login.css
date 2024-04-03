@@ -1,0 +1,31 @@
+@import '../../variables.css';
+
+.login-page{
+    background: linear-gradient(0deg, var(--background) 0%, var(--primary) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background);
+    padding: 25px 25px 35px 25px;
+    border-radius: 10px;
+}
+
+.login-bottom{
+    margin-top: 25px;
+}
+
+.error-message{
+    width: 220px;
+    font-size: small;
+    font-weight: 300;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
