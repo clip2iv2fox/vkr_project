@@ -12,8 +12,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="title">
-        <i className='fa fa-paper-plane' style={{fontSize: '35px', color:'white', marginRight: '15px'}}></i>
-        AVIA.reg
+        Тест ИС
       </div>
       <div className='header-right'>
         <i onClick={() => toggleDarkMode()} className={dark ? 'fa fa-moon-o darktheme' : 'fa fa-sun-o darktheme'}></i>
