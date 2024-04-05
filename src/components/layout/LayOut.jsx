@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../header/header'
 import Sidebar from '../sidebar/Sidebar'
+import './LayOut.css'
 
 const LayOut = ({list, info, children}) => {
     return (
         <div className='layout'>
             <Header info={info}/>
-            <div className='main'>
+            <div className='page'>
                 <Sidebar list={list}/>
-                {children}
+                <div className='page-content'>
+                    {children}
+                </div>
             </div>
         </div>
     )

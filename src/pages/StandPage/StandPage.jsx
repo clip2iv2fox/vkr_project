@@ -3,16 +3,13 @@ import { useLocation } from 'react-router-dom';
 import { get_id, get, get_time } from '../../configs/axios_configs';
 
 const DashBoardPage = () => {
-    const [time, setTime] = useState("");                           
+    const [time, setTime] = useState("");
     const [stand, setStand] = useState({ id: "", name: "", x: "0", y: "0", create_at: "", modified_at: "" });
     const [devices, setDevices] = useState([]);
     const [loadingStand, setLoadingStand] = useState(true);        
     const [loadingDevices, setLoadingDevices] = useState(true);    
     const [errorTime, setErrorTime] = useState(false);                     
     const [errorData, setErrorData] = useState(false);                     
-    const [isModalOpen, setIsModalOpen] = useState(false);          
-    const [logsCard, setCardLogs] = useState();
-    const logs = [];
     const id = useLocation();
 
     useEffect(() => {
@@ -142,10 +139,8 @@ const DashBoardPage = () => {
     }
 
     return (
-        <div>
-            <div style={{ overflowY: "scroll", overflow: "hidden", height: "100vh", padding: "15px" }}>
-                {repeatY()}
-            </div>
+        <div style={{ overflowY: "scroll", overflow: "hidden", height: "100vh", padding: "15px" }}>
+            {repeatY()}
         </div>
     );
 };

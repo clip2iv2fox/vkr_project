@@ -21,5 +21,7 @@
 }
 
 .button.default {
-    background-color: var(--grey);
+    color: var(--grey);
+    background: none;
+    border: solid 1.5px var(--grey);
 }

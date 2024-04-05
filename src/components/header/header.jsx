@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import "./header.css"
+import { Link } from 'react-router-dom'; // Импортируем Link
+import './header.css';
+import Button from '../button/button';
 
 const Header = () => {
   const [dark, setDark] = useState(true);
@@ -15,10 +17,10 @@ const Header = () => {
         Тест ИС
       </div>
       <div className='header-right'>
-        <i onClick={() => toggleDarkMode()} className={dark ? 'fa fa-moon-o darktheme' : 'fa fa-sun-o darktheme'}></i>
-        <div className="icon">
+        <Button type={"default"}>выход</Button>
+        <Link to="/profile" className="icon">
           <i className='fa fa-paper-plane' style={{fontSize: '25px', color:'white', opacity: '70%'}}></i>
-        </div>
+        </Link>
       </div>
     </div>
   );
