@@ -18,7 +18,7 @@ const Header = () => {
       </div>
       <div className='header-right'>
         <Button type={"default"}>выход</Button>
-        <Link to="/profile" className="icon">
+        <Link to="/account" className="icon">
           <i className='fa fa-paper-plane' style={{fontSize: '25px', color:'white', opacity: '70%'}}></i>
         </Link>
       </div>
