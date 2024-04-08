@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LayOut from './components/layout/LayOut';
 import StandPage from './pages/StandPage/StandPage';
 import Profile from './pages/Profile/Profile';
+import Users from './pages/Users/Users';
 
 const App = () => {
   const [userData, setUserData] = useState(null);
@@ -11,7 +12,11 @@ const App = () => {
     {
       link: "/stand",
       name: "stand1 "
-    }
+    },
+    {
+      link: "/employees",
+      name: "Employees "
+    },
   ])
 
   const handleLogin = (data) => {
@@ -29,6 +34,11 @@ const App = () => {
         <Route path="/profile" element={
           <LayOut list={list}>
             <Profile/>
+          </LayOut>
+        }/>
+        <Route path="/employees" element={
+          <LayOut list={list}>
+            <Users/>
           </LayOut>
         }/>
         <Route path="*" element={<Navigate to="/" replace />} />
