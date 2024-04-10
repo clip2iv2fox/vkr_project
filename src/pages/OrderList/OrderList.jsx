@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './OrderList.css';
 
 const OrderList = () => {
@@ -33,9 +33,15 @@ const OrderList = () => {
         // Другие заказы...
     ];
 
+    const navigate = useNavigate();
+
     // Функция для переключения состояния аккордеона заказа
     const toggleOrderAccordion = (orderId) => {
         setOpenOrderAccordion(openOrderAccordion === orderId ? null : orderId);
+    };
+
+    const handleRowClick = (path) => {
+        navigate(`/devices/${path}`);
     };
 
     return (
@@ -48,7 +54,7 @@ const OrderList = () => {
                 <th>Дата привоза</th>
                 <th>Дата сдачи</th>
                 <th>Бюджет</th>
-                <th>Название клиента</th>
+                <th>Заказчик</th>
             </tr>
             </thead>
             <tbody>
@@ -68,26 +74,26 @@ const OrderList = () => {
                 </tr>
                 {openOrderAccordion === order.id && (
                     <tr className="order-details" colSpan="5">
-                    <td colSpan="5">
-                        <table>
-                        <thead>
-                            <tr>
-                            <th>ID</th>
-                            <th>Серийный номер</th>
-                            <th>Тип оборудования</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {order.equipment.map((equipment) => (
-                            <tr key={equipment.id}>
-                                <td>{equipment.id}</td>
-                                <td>{equipment.serialNumber}</td>
-                                <td>{equipment.type}</td>
-                            </tr>
-                            ))}
-                        </tbody>
-                        </table>
-                    </td>
+                        <td colSpan="5">
+                            <table>
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Серийный номер</th>
+                                <th>Тип оборудования</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {order.equipment.map((equipment) => (
+                                    <tr key={equipment.id} onClick={() => handleRowClick(equipment.serialNumber)}>
+                                        <td>{equipment.id}</td>
+                                        <td>{equipment.serialNumber}</td>
+                                        <td>{equipment.type}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            </table>
+                        </td>
                     </tr>
                 )}
                 </React.Fragment>

@@ -1,0 +1,79 @@
+.user-page {
+    display: flex;
+    width: 90%;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-details {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.user-info .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: left;
+}
+
+.user-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background: #ddd;
+}
+
+.user-info h2 {
+    margin: 5px 0;
+}
+
+.user-info p {
+    margin: 3px 0;
+}
+
+.equipment-table,
+.orders-table {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: none;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr {
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 600px) {
+    .user-info img {
+        width: 100px;
+        height: 100px;
+    }
+}

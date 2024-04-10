@@ -9,10 +9,11 @@ import OrderList from './pages/OrderList/OrderList';
 import ClientPage from './pages/ClientPage/ClientPage';
 import OrderPage from './pages/OrderPage/OrderPage';
 import UserPage from './pages/UserPage/UserPage';
+import DevicePage from './pages/DevicePage/DevicePage';
 
 const App = () => {
   const [userData, setUserData] = useState(null);
-  const [list, isList] = useState([
+  const [list, setList] = useState([
     {
       link: "/stand",
       name: "stand1 ",
@@ -34,7 +35,7 @@ const App = () => {
       component: <Profile/>
     },
   ])
-  const [multy_list, isMulty_list] = useState([
+  const [multy_list, setMulty_list] = useState([
     {
       link: "/clients",
       component: <ClientPage/>
@@ -46,6 +47,10 @@ const App = () => {
     {
       link: "/employees",
       component: <UserPage/>
+    },
+    {
+      link: "/devices",
+      component: <DevicePage/>
     },
   ])
   const handleLogin = (data) => {
