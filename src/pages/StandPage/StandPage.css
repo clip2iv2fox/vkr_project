@@ -1,0 +1,19 @@
+.stand-page {
+    overflow-y: scroll;
+    overflow: hidden;
+    height: 100vh;
+    padding: 15px;
+}
+
+.stack-row {
+    display: flex;
+}
+
+.coordinate {
+    color: #6a6e73;
+    padding-top: 21px;
+}
+
+.stack-item {
+    padding-left: 10px;
+}

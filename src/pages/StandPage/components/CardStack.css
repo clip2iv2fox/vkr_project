@@ -1,4 +1,4 @@
-@import "@app/styles/variables.css";
+@import "../../../variables.css";
 
 /* наполнение сарточки */
 .pf-c-card__body{
