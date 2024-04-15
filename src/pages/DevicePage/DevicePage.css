@@ -10,7 +10,17 @@
 
 .device-info {
     flex: 1;
-    padding-right: 20px;
+    padding-right: 70px;
+}
+
+.device-info p{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.testing-history{
+    padding: 10px;
 }
 
 .pie-chart {
