@@ -1,5 +1,5 @@
-import React from 'react';
-import './Profile.css'
+import React, { useState } from 'react';
+import './Profile.css';
 
 const Profile = () => {
     // Данные пользователя (замените эту информацию на реальные данные)
@@ -10,8 +10,21 @@ const Profile = () => {
         phoneNumber: '123-456-7890',
         birthDate: '01.01.1990',
         login: 'ivanov',
-        password: '********', // Не рекомендуется показывать пароль на странице
+        password: '12345', // Не рекомендуется показывать пароль на странице
         avatar: 'https://via.placeholder.com/150' // URL к аватару пользователя
+    };
+
+    // Состояние для отображения пароля
+    const [showPassword, setShowPassword] = useState(false);
+
+    // Функция для переключения отображения пароля
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    // Функция для замены символов пароля на звездочки
+    const getPasswordDisplay = () => {
+        return showPassword ? userData.password : '*'.repeat(userData.password.length);
     };
 
     return (
@@ -28,7 +41,7 @@ const Profile = () => {
                     <p><strong>Дата рождения:</strong> {userData.birthDate}</p>
                     <p><strong>Логин:</strong> {userData.login}</p>
                     {/* Не рекомендуется показывать пароль на странице */}
-                    <p><strong>Пароль:</strong> {userData.password}</p>
+                    <p className='password' onClick={togglePasswordVisibility}><strong>Пароль:</strong> {getPasswordDisplay()}</p>
                 </div>
             </div>
         </div>

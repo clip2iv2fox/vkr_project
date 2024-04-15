@@ -56,7 +56,7 @@ const UserPage = () => {
                 </div>
                 {user.position === 'Технический сотрудник' && (
                     <div className="equipment-table">
-                        <h3>Оборудование</h3>
+                        <h3>Оборудование, с которым работает:</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -83,7 +83,7 @@ const UserPage = () => {
                 )}
                 {(user.position === 'Администратор' || user.position === 'Менеджер') && (
                     <div className="orders-table">
-                        <h3>Заказы</h3>
+                        <h3>Заказы, с которыми работает:</h3>
                         <table>
                             <thead>
                                 <tr>

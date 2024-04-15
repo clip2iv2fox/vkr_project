@@ -1,13 +1,19 @@
 @import '../../variables.css';
 
 .header {
+    position: fixed;
+    top: 0;
+    left: 0; /* Зафиксируем Header по левому краю */
+    right: 0; /* Растянем Header по всей ширине экрана */
+    width: 100%; /* Указываем ширину явно, хотя width: 100vw; также будет работать */
     display: flex;
+    flex: 0 0 auto; /* Жестко фиксируем Header по высоте */
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
     margin-bottom: 10px;
     background: var(--background);
-    background: linear-gradient(0deg, var(--background) 0%, var(--primary) 20%);
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--primary) 20%);
+    z-index: 1000; /* Чтобы Header был поверх других элементов */
 }
 
 .title{
@@ -15,6 +21,7 @@
     justify-content: space-between;
     align-items: center;
     color: var(--background);
+    margin: 20px;
 }
 
 .logo {
@@ -50,4 +57,5 @@
 .header-right{
     display: flex;
     align-items: center;
+    margin: 20px 20px 25px 20px;
 }

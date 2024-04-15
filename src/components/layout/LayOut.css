@@ -1,14 +1,17 @@
-.layout{
+.layout {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.page{
+.page {
     display: flex;
+    margin-top: 80px;
     flex-direction: row;
+    overflow: hidden; /* Предотвращаем появление скроллбара на этом уровне */
 }
 
-.page-content{
+.page-content {
     flex: 5;
+    overflow-y: auto; /* Добавляем вертикальную прокрутку для содержимого */
 }

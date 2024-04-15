@@ -8,6 +8,7 @@ const DevicePage = () => {
     const [device, setDevice] = useState({
         type: 'Монитор',
         customer: { id: 1, name: 'Клиент 1' },
+        order: "1",
         serialNumber: 'SN001',
         lastMovement: 'Кабинет 101',
         employee: { id: 1, name: 'Иванов Иван Иванович' },
@@ -17,24 +18,24 @@ const DevicePage = () => {
         testingStatus: 'Завершено', // Статус тестирования
         testingHistory: [ // История тестирования
             { stage: 'Подготовка', percent: 0 },
-            { stage: 'Экран', percent: 10, status: 'SUCCESS', criteria: [
+            { stage: 'Экран', percent: 10, status: 'SUCCESS', time: '10:00', criteria: [
                 { name: 'Проверка наличия дефектов (пятна, битые пиксели, засветки).', status: 'SUCCESS' },
                 { name: 'Проверка равномерности подсветки.', status: 'SUCCESS' },
                 { name: 'Тестирование цветопередачи.', status: 'SUCCESS' }
             ] },
-            { stage: 'Панель управления', percent: 30, status: 'SUCCESS', criteria: [
+            { stage: 'Панель управления', percent: 30, status: 'SUCCESS', time: '10:30', criteria: [
                 { name: 'Проверка функциональности всех кнопок.', status: 'SUCCESS' },
                 { name: 'Проверка работы джойстика или других элементов управления.', status: 'SUCCESS' }
             ] },
-            { stage: 'Разъемы', percent: 60, status: 'WARNING', criteria: [
+            { stage: 'Разъемы', percent: 60, status: 'WARNING', time: '11:00', criteria: [
                 { name: 'Тестирование функциональности каждого разъема (HDMI, DisplayPort, VGA, DVI).', status: 'WARNING' },
                 { name: 'Проверка качества передачи сигнала.', status: 'SUCCESS' }
             ] },
-            { stage: 'Питание и кабели связи', percent: 70, status: 'FAIL', criteria: [
+            { stage: 'Питание и кабели связи', percent: 70, status: 'FAIL', time: '12:00', criteria: [
                 { name: 'Проверка работоспособности блока питания и кабелей.', status: 'FAIL' },
                 { name: 'Проверка на отсутствие перегрева.', status: 'SUCCESS' }
             ] },
-            { stage: 'Завершено' },
+            { stage: 'Завершено', percent: 100, time: '13:00' },
         ]
     });
     
@@ -77,6 +78,21 @@ const DevicePage = () => {
         return <div style={{ color: overallColor, fontSize: 20, fontWeight: 600 }}>{overallStatus}</div>
     };
 
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active) {
+            return (
+                <div className="custom-tooltip">
+                    <p className="label">{`Этап: ${label}`}</p>
+                    {payload && payload[0] && (
+                        <p className="time">{`Время: ${payload[0].payload.time}`}</p>
+                    )}
+                </div>
+            );
+        }
+    
+        return null;
+    };
+
     return (
         <div className="device-page">
             <div className="device-details">
@@ -84,14 +100,14 @@ const DevicePage = () => {
                     <h2>{device.type}</h2>
                     <p><strong>Серийный номер:</strong> {device.serialNumber}</p>
                     <p><strong>Заказчик:</strong> <Link to={`/clients/${device.customer.id}`}>{device.customer.name}</Link></p>
+                    <p><strong>Заказ:</strong> <Link to={`/orders/${device.order}`}>№{device.order}</Link></p>
                     <p><strong>Размещается:</strong> {device.lastMovement}</p>
                     <p><strong>Сотрудник:</strong> <Link to={`/employees/${device.employee.id}`}>{device.employee.name}</Link></p>
                     <p><strong>Дата прибытия:</strong> {device.arrivalDate}</p>
                     <p><strong>Дата обратной отправки:</strong> {device.returnDate}</p>
                     {device.testingStatus === 'Завершено' ? 
                         <p><strong>Результат тестирования:</strong> {totalStatus(device.testingHistory)}</p>
-                    : ""
-                    }
+                    : ""}
                 </div>
                 <div className="pie-chart">
                     <h3>Прогресс тестирования</h3>
@@ -113,12 +129,12 @@ const DevicePage = () => {
                 </div>
             </div>
             <div className="line-chart">
-                <h3 className="device-details">История тестирования, статус: <div style={{ color: getStatusColor(device.testingStatus) }}>{device.testingStatus}</div></h3>
+                <h3 className="device-details">История тестирования, статус: <div style={{ color: getColor(device.testingProgress) }}>{device.testingStatus}</div></h3>
                 <LineChart width={window.innerWidth / 1.5} height={300} data={device.testingHistory}>
                     <XAxis dataKey="stage" />
                     <YAxis />
                     <CartesianGrid stroke="#ccc" />
-                    <Tooltip />
+                    <Tooltip content={<CustomTooltip />} />
                     <Legend />
                     <Line type="monotone" dataKey="percent" stroke="#8884d8" />
                 </LineChart>

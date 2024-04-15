@@ -1,6 +1,7 @@
 .device-page {
     margin: 20px;
     width: 80%;
+    z-index: -1;
 }
 
 .device-details {
@@ -11,6 +12,7 @@
 .device-info {
     flex: 1;
     padding-right: 70px;
+    min-width: 360px;
 }
 
 .device-info p{
