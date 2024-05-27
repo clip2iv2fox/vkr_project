@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import avatar from '../../public/person.jpg'
 import './Profile.css';
 
 const Profile = () => {
     // Данные пользователя (замените эту информацию на реальные данные)
     const userData = {
         firstName: 'Иван',
-        lastName: 'Иванов',
+        lastName: 'Извеков',
         email: 'ivan@example.com',
         phoneNumber: '123-456-7890',
         birthDate: '01.01.1990',
-        login: 'ivanov',
+        login: 'iizvekov',
         password: '12345', // Не рекомендуется показывать пароль на странице
-        avatar: 'https://via.placeholder.com/150' // URL к аватару пользователя
+        avatar: avatar // URL к аватару пользователя
     };
 
     // Состояние для отображения пароля

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './UserPage.css';
+import avatar from '../../public/person.jpg'
 
 const UserPage = () => {
     const [users, setUsers] = useState([
         {
             "id": 1,
-            "photo": "",
+            "photo": avatar,
             "name": "Иванов Иван Иванович",
             "position": "Технический сотрудник",
             "contact": "+123456789",
@@ -14,17 +15,17 @@ const UserPage = () => {
                 {
                     "id": 1,
                     "serialNumber": "SN001",
-                    "name": "Принтер",
-                    "type": "Принтер",
-                    "location": "Кабинет 101",
+                    "name": "Aquarius Block",
+                    "type": "Компьютер",
+                    "location": "Сектор 101",
                     "testingStatus": "Протестирован"
                 },
                 {
                     "id": 2,
                     "serialNumber": "SN002",
-                    "name": "Сканер",
-                    "type": "Сканер",
-                    "location": "Кабинет 102",
+                    "name": "Laptop ZENBook",
+                    "type": "Ноутбук",
+                    "location": "Сектор 102",
                     "testingStatus": "Протестирован"
                 }
             ],
